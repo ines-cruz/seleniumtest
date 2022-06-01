@@ -6,6 +6,8 @@ var webdriver = require("selenium-webdriver");
 require("geckodriver"); // Application Server
 const serverUri = "http://localhost:3000/#";
 const appTitle = "React Selenium App";
+//const firefox = require("selenium-webdriver/firefox");
+
 /**
  * Config for Chrome browser
  * @type {webdriver}
@@ -13,7 +15,9 @@ const appTitle = "React Selenium App";
 var browser = new webdriver.Builder()
   .usingServer()
   .withCapabilities({ browserName: "firefox" })
+  //.setFirefoxOptions(new firefox.Options().addArguments("--headless"))
   .build();
+
 /**
  * Config for Firefox browser (Comment Chrome config when you intent to test in Firefox)
  * @type {webdriver}
@@ -32,7 +36,7 @@ function logTitle() {
     browser
       .getTitle()
       .then(function (title) {
-        console.log(title);
+        console.log("title:" + title);
         resolve(title);
       })
       .catch((err) => reject(err));
@@ -50,7 +54,6 @@ describe("Home Page", function (done) {
         .then(logTitle)
         .then((title) => {
           assert.equal(title, appTitle);
-          console.log(assert.equal(title, appTitle));
           resolve();
         })
         .then(() => done());

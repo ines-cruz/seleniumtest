@@ -14,25 +14,29 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 The page will reload when you make changes.\
 You may also see any lint errors in the console.
 
-### `npm test`
+### Selenium
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+In another terminal, in the project directory, run the following command `npm run s-test`
 
-### `npm run build`
+This will run the following tests:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+-  clicking on submit button without username and
+password
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- adding a username
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- adding a password
 
+- clicking on submit with the credentials
 
-## Learn More
+If you wish to run the tests with the headless option you can uncomment in `test/test.js` that option.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Findings
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+More info on other frameworks that are similar to Selenium: https://www.perfecto.io/blog/selenium-alternatives
 
+Cucumber:  "While Selenium is an automation tool for web apps, Cucumber is an automation tool for behavior-driven development (BDD). In addition, Selenium executes UI tests while Cucumber does acceptance testing." (so I think Selenium is more what we are looking for)
+
+Regarding Cypress vs Selenium: "Selenium is made up of bindings, or libraries, and the WebDriver, which controls the browsers. These two components work through the JSON network. Alternatively, while Cypress is used for UI testing, it uses its own unique DOM manipulation and runs directly in the browser with no network communication."
+
+Regarding best practices: https://www.parasoft.com/blog/automated-web-ui-testing-best-practices-challenges-tools/

@@ -62,50 +62,56 @@ describe("Home Page", function (done) {
   /**
    * Test case to check whether the given element is loaded.
    */
-  it("Should check whether the given element is loaded", function () {
-    return new Promise((resolve, reject) => {
-      browser
-        .findElement({ id: "button1" })
-        .then((elem) => {
-          resolve();
-        })
-        .catch((err) => reject(err));
+  describe("Button is loaded test example ", () => {
+    it("Should check whether the given element is loaded", async () => {
+      await browser.findElement({ id: "button1" });
+    });
+  });
+  describe("Submit Button no credentials test example ", () => {
+    it("Submit button clicked with no input", async () => {
+      const submitButton = await browser.findElement({ id: "button1" });
+      await submitButton.click();
     });
   });
 
-  it("Submit button clicked with no input", function () {
-    return new Promise((resolve, reject) => {
-      const submitButton = browser.findElement({ id: "button1" });
-      submitButton.click();
-      resolve();
+  describe("Username test example ", () => {
+    it("Add username", async () => {
+      const user = await browser.findElement({ id: "uname" });
+      await user.sendKeys("user1");
     });
   });
 
-  it("Add username", function () {
-    return new Promise((resolve, reject) => {
+  describe("Password test example ", () => {
+    it("Add password", async () => {
+      const pass = await browser.findElement({ id: "password" });
+      await pass.sendKeys("pass1");
+    });
+  });
+
+  it("Get username", function () {
+    return new Promise((resolve) => {
       browser
         .findElement({ id: "uname" })
-        .sendKeys("user1")
-        .then((input) => expect(input).to.equal("user1"));
+        .then((input) => expect(input).to.equal("user1"))
+        .then((input) => assert.equal(input, "user1"));
       resolve();
     });
   });
 
-  it("Add password", function () {
-    return new Promise((resolve, reject) => {
+  it("Get password", function () {
+    return new Promise((resolve) => {
       browser
         .findElement({ id: "password" })
-        .sendKeys("pass1")
-        .then((input) => expect(input).to.equal("pass1"));
+        .then((input) => expect(input).to.equal("pass1"))
+        .then((input) => assert.equal(input, "pass1"));
       resolve();
     });
   });
 
-  it("Submit button clicked with input", function () {
-    return new Promise((resolve, reject) => {
-      const submitButton = browser.findElement({ id: "button1" });
-      submitButton.click();
-      resolve();
+  describe("Submit button with credentials test example ", () => {
+    it("Submit button clicked with input", async () => {
+      const submitButton = await browser.findElement({ id: "button1" });
+      await submitButton.click();
     });
   });
 
